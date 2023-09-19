@@ -1,12 +1,24 @@
+# cve_details.py
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd
 import os
 
-BASIC_URL = "https//cve.mitre.org"
+BASIC_URL = "https://cve.mitre.org"
+BASE_URL = BASIC_URL + "/cgi-bin/cvekey.cgi?keyword="
 
-BASE_URL = BASIC_URL + "cgi-bin/cvekey.cgi?keyword="
+NVD_URL = "https://nvd.nist.gov/vuln/detail/"
 
+def get_patch_link(cve_id: str) -> str:
+    nvd_response = requests.get("https://nvd.nist.gov/vuln/detail/CVE-2023-4758")
+    if nvd_response.status_code == 200:
+        nvd_soup = BeautifulSoup(nvd_response.content, "html.parser")
+        patch_link_element = nvd_soup.find('a', {'data-testid': 'patch_link'})
+        patch_link = patch_link_element['href'] if patch_link_element else ''
+    else:
+        patch_link = ''
+    
+    return patch_link
 
 def get_cves(keyword: str, url: str) -> None:
     response = requests.get(url)
@@ -25,8 +37,14 @@ def get_cves(keyword: str, url: str) -> None:
                     link = title_element['href'] if title_element else ''
                     title = title_element.get_text().strip() if title_element else ''
                     if title and link:
-                        data.append({'CVE ID': title, 'Link': BASIC_URL + link})
-                        # print(f"Title: {title}\nLink: {basic_url + link}\n")
+                        cve_id = title
+                        cve_link = BASIC_URL + link
+
+                        # Get the patch link for the CVE from NVD
+                        patch_link = get_patch_link(cve_id)
+
+                        data.append({'CVE ID': cve_id, 'Link': cve_link, 'Patch Link (NVD)': patch_link})
+
             if data:
                 # Create a DataFrame
                 df = pd.DataFrame(data)
@@ -41,6 +59,6 @@ def get_cves(keyword: str, url: str) -> None:
             else:
                 print('No CVE IDs and Links Found')
         else:
-            print('No Table WithRules Found')
+            print('No Table With Rules Found')
     else:
         print("Failed to retrieve the page. Status code:", response.status_code)
