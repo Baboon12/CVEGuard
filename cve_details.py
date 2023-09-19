@@ -10,13 +10,29 @@ BASE_URL = BASIC_URL + "/cgi-bin/cvekey.cgi?keyword="
 NVD_URL = "https://nvd.nist.gov/vuln/detail/"
 
 def get_patch_link(cve_id: str) -> str:
-    nvd_response = requests.get("https://nvd.nist.gov/vuln/detail/CVE-2023-4758")
+    url = NVD_URL + cve_id
+    # url = 'https://nvd.nist.gov/vuln/detail/CVE-2023-38182'
+    # url = 'https://nvd.nist.gov/vuln/detail/CVE-2023-4355'
+    nvd_response = requests.get(url)
     if nvd_response.status_code == 200:
         nvd_soup = BeautifulSoup(nvd_response.content, "html.parser")
-        patch_link_element = nvd_soup.find('a', {'data-testid': 'patch_link'})
-        patch_link = patch_link_element['href'] if patch_link_element else ''
+        patch_text = nvd_soup.find('table', {'data-testid': 'vuln-hyperlinks-table'}).text
+        if 'Patch' in patch_text:
+            # print('Patch Available')
+            patch_text = patch_text.splitlines()
+            link_available = False
+            for text in patch_text:
+                if text.startswith('https://'):
+                    patch_link = text
+                    link_available = True
+                    break
+            if not link_available:
+                patch_link = ''
+        else:
+            # print('Patch Not Available')
+            patch_link = 'Patch Not Available'
     else:
-        patch_link = ''
+        patch_link = 'Patch Not Available'
     
     return patch_link
 
