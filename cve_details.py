@@ -13,6 +13,11 @@ def get_patch_link(cve_id: str) -> str:
     url = NVD_URL + cve_id
     # url = 'https://nvd.nist.gov/vuln/detail/CVE-2023-38182'
     # url = 'https://nvd.nist.gov/vuln/detail/CVE-2023-4355'
+    # url = 'https://nvd.nist.gov/vuln/detail/CVE-2022-27535/'
+    patch_type = ''
+    patch_link = []
+    patch_available = False
+    vendor_advisory_available = False
     nvd_response = requests.get(url)
     if nvd_response.status_code == 200:
         nvd_soup = BeautifulSoup(nvd_response.content, "html.parser")
@@ -20,21 +25,33 @@ def get_patch_link(cve_id: str) -> str:
         if 'Patch' in patch_text:
             # print('Patch Available')
             patch_text = patch_text.splitlines()
-            link_available = False
+            patch_available = False
             for text in patch_text:
                 if text.startswith('https://'):
-                    patch_link = text
-                    link_available = True
-                    break
-            if not link_available:
-                patch_link = ''
+                    patch_link.append(text)
+                    patch_type = 'Patch'
+                    patch_available = True
         else:
+            if 'Vendor Advisory' in patch_text:
+                patch_text = patch_text.splitlines()
+                vendor_advisory_available = False
+                for text in patch_text:
+                    if text.startswith('https://'):
+                        patch_link.append(text)
+                        patch_type = 'Vendor Advisory'
+                        vendor_advisory_available = True
+            
+        if not patch_available and not vendor_advisory_available:
             # print('Patch Not Available')
             patch_link = 'Patch Not Available'
+            patch_type = 'NA'
     else:
         patch_link = 'Patch Not Available'
+        patch_type = 'NA'
     
-    return patch_link
+    patch_link = '\n'.join(patch_link)
+
+    return patch_type, patch_link
 
 def get_cves(keyword: str, url: str) -> None:
     response = requests.get(url)
@@ -57,9 +74,10 @@ def get_cves(keyword: str, url: str) -> None:
                         cve_link = BASIC_URL + link
 
                         # Get the patch link for the CVE from NVD
-                        patch_link = get_patch_link(cve_id)
+                        patch_type, patch_link = get_patch_link(cve_id)
+                        # patch_link = ''
 
-                        data.append({'CVE ID': cve_id, 'Link': cve_link, 'Patch Link (NVD)': patch_link})
+                        data.append({'CVE ID': cve_id, 'Link': cve_link, 'Patch Type': patch_type, 'Patch Link (NVD)': patch_link})
 
             if data:
                 # Create a DataFrame
@@ -78,3 +96,4 @@ def get_cves(keyword: str, url: str) -> None:
             print('No Table With Rules Found')
     else:
         print("Failed to retrieve the page. Status code:", response.status_code)
+        
