@@ -143,8 +143,8 @@ def get_cves(keyword: str, url: str) -> None:
                         raise Exception(f'File {file_path} not accessible')
                     
             print(f'CVE details of {keyword} scraped from {url} stored at cves/cve_data_{keyword}.xlsx')
-            if not found:
-                print('No CVE IDs and Links Found')
+        if not found:
+            print('No CVE IDs and Links Found')
         else:
             print('No Table With Rules Found')
     else:
