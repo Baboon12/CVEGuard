@@ -103,7 +103,7 @@ def get_cves(keyword: str, url: str) -> None:
         if table:
             data = []
             rows = table.find_all('tr')
-
+            found = False
             for row in rows:
                 tds = row.find_all('td')
                 if len(tds) >= 2:
@@ -132,6 +132,7 @@ def get_cves(keyword: str, url: str) -> None:
                                     csv_writer = csv.writer(file)
                                     csv_writer.writerow(data)
                                     write = True
+                                    found = True
                             except PermissionError:
                                 if not write:
                                     time.sleep(3)
@@ -142,7 +143,8 @@ def get_cves(keyword: str, url: str) -> None:
                         raise Exception(f'File {file_path} not accessible')
                     
             print(f'CVE details of {keyword} scraped from {url} stored at cves/cve_data_{keyword}.xlsx')
-            # print('No CVE IDs and Links Found')
+            if not found:
+                print('No CVE IDs and Links Found')
         else:
             print('No Table With Rules Found')
     else:
