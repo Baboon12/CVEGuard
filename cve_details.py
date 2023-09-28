@@ -128,7 +128,7 @@ def get_cves(keyword: str, url: str) -> None:
                         write = False
                         while not write:
                             try:
-                                with open(file_path, 'a') as file:
+                                with open(file_path, 'a', newline='') as file:
                                     csv_writer = csv.writer(file)
                                     csv_writer.writerow(data)
                                     write = True
