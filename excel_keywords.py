@@ -11,7 +11,7 @@ def format_value(cell: str) -> str:
     
     return cell_value
 
-def get_keywords()-> list[str]:
+def get_keywords() -> list[str]:
     xl_keywords = openpyxl.load_workbook(PATH)
     sheet = xl_keywords.active
     max_rows = sheet.max_row

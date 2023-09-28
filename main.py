@@ -6,3 +6,4 @@ urls = excel_keywords.create_urls(keywords)
 
 for keyword, url in zip(keywords, urls):
     cve_details.get_cves(keyword, url)
+    

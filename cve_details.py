@@ -1,13 +1,54 @@
 # cve_details.py
 import requests
 from bs4 import BeautifulSoup
-import pandas as pd
+import time
 import os
+import csv
 
 BASIC_URL = "https://cve.mitre.org"
 BASE_URL = BASIC_URL + "/cgi-bin/cvekey.cgi?keyword="
 
 NVD_URL = "https://nvd.nist.gov/vuln/detail/"
+
+def setup_session(url: str):
+    
+    session = requests.Session()
+    session.headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.1.2222.33 Safari/537.36",
+        "Accept-Encoding": "*",
+        "Connection": "keep-alive"
+    }
+    response = session.get(url)
+    
+    return response
+
+def check_file(file_path: str) -> bool:
+    try:
+        with open(file_path, 'r') as file:
+            return True
+
+    except FileNotFoundError:
+        with open(file_path, 'x') as file:
+            return True
+
+def check_csv_file(file_path: str, headers: list[str]) -> bool:
+    flag = False
+    if check_file(file_path):
+        with open(file_path, 'r') as csvfile:
+            csv_reader = csv.reader(csvfile)
+            try:
+                if not csv_reader[0] == headers:
+                    flag = True
+            except TypeError:
+                csv_dict = [row for row in csv_reader]
+                if len(csv_dict) == 0:
+                    flag = True
+
+    if flag:
+        with open(file_path, 'a') as csvfile:
+            csv_writer = csv.writer(csvfile)
+            csv_writer.writerow(headers)
+    return True
 
 def get_patch_link(cve_id: str) -> str:
     url = NVD_URL + cve_id
@@ -18,7 +59,7 @@ def get_patch_link(cve_id: str) -> str:
     patch_link = []
     patch_available = False
     vendor_advisory_available = False
-    nvd_response = requests.get(url)
+    nvd_response = setup_session(url)
     if nvd_response.status_code == 200:
         nvd_soup = BeautifulSoup(nvd_response.content, "html.parser")
         patch_text = nvd_soup.find('table', {'data-testid': 'vuln-hyperlinks-table'}).text
@@ -54,7 +95,7 @@ def get_patch_link(cve_id: str) -> str:
     return patch_type, patch_link
 
 def get_cves(keyword: str, url: str) -> None:
-    response = requests.get(url)
+    response = setup_session(url)
 
     if response.status_code == 200:
         soup = BeautifulSoup(response.content, "html.parser")
@@ -75,25 +116,35 @@ def get_cves(keyword: str, url: str) -> None:
 
                         # Get the patch link for the CVE from NVD
                         patch_type, patch_link = get_patch_link(cve_id)
-                        # patch_link = ''
+                        data = [cve_id, cve_link, patch_type, patch_link]
 
-                        data.append({'CVE ID': cve_id, 'Link': cve_link, 'Patch Type': patch_type, 'Patch Link (NVD)': patch_link})
-
-            if data:
-                # Create a DataFrame
-                df = pd.DataFrame(data)
-
-                # Save to an Excel file
-                try:
-                    os.mkdir('cves')
-                except FileExistsError:
-                    pass
-                df.to_excel('cves/cve_data_' + keyword + '.xlsx', index=False)
-                print(f'CVE details of {keyword} scraped from {url} stored at cves/cve_data_{keyword}.xlsx')
-            else:
-                print('No CVE IDs and Links Found')
+                if data:
+                    try:
+                        os.mkdir('cves')
+                    except FileExistsError:
+                        pass
+                    file_path = 'cves/cve_data_' + keyword + '.csv'
+                    if check_csv_file(file_path, ['CVE ID', 'Link', 'Patch Type', 'Patch Link (NVD)']):
+                        write = False
+                        while not write:
+                            try:
+                                with open(file_path, 'a') as file:
+                                    csv_writer = csv.writer(file)
+                                    csv_writer.writerow(data)
+                                    write = True
+                            except PermissionError:
+                                if not write:
+                                    time.sleep(3)
+                                    continue
+                                else:
+                                    raise PermissionError(f'File {file_path} not accessible')
+                    else:
+                        raise Exception(f'File {file_path} not accessible')
+                    
+            print(f'CVE details of {keyword} scraped from {url} stored at cves/cve_data_{keyword}.xlsx')
+                # else:
+                    # print('No CVE IDs and Links Found')
         else:
             print('No Table With Rules Found')
     else:
         print("Failed to retrieve the page. Status code:", response.status_code)
-        
