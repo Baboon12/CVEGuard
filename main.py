@@ -3,7 +3,9 @@ import excel_keywords
 import cve_details
 
 def process_keyword(keyword, url):
+    print(f"Started processing keyword: {keyword}")
     cve_details.get_cves(keyword, url)
+    print(f"Finished processing keyword: {keyword}")
 
 if __name__ == "__main__":
     keywords = excel_keywords.get_keywords()
