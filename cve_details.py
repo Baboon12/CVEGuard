@@ -83,12 +83,12 @@ def get_patch_link(cve_id: str) -> str:
                         vendor_advisory_available = True
             
         if not patch_available and not vendor_advisory_available:
-            # print('Patch Not Available')
-            patch_link = 'Patch Not Available'
+        # print('Patch Not Available')
+            patch_link = ['Patch Not Available']
             patch_type = 'NA'
     else:
-        patch_link = 'Patch Not Available'
-        patch_type = 'NA'
+        patch_link = '\n'.join(patch_link)
+
     
     patch_link = '\n'.join(patch_link)
 
@@ -116,7 +116,11 @@ def get_cves(keyword: str, url: str) -> None:
 
                         # Get the patch link for the CVE from NVD
                         patch_type, patch_link = get_patch_link(cve_id)
-                        data = [cve_id, cve_link, patch_type, patch_link]
+
+                        # Extract base score value and NVD published date
+                        base_score, nvd_published_date = extract_base_score_and_date(cve_id)
+
+                        data = [cve_id, cve_link, patch_type, patch_link, base_score, nvd_published_date]
 
                 if data:
                     try:
@@ -124,7 +128,7 @@ def get_cves(keyword: str, url: str) -> None:
                     except FileExistsError:
                         pass
                     file_path = 'cves/cve_data_' + keyword + '.csv'
-                    if check_csv_file(file_path, ['CVE ID', 'Link', 'Patch Type', 'Patch Link (NVD)']):
+                    if check_csv_file(file_path, ['CVE ID', 'Link', 'Patch Type', 'Patch Link (NVD)', 'Base-Score', 'NVD Published Date']):
                         write = False
                         while not write:
                             try:
@@ -149,3 +153,25 @@ def get_cves(keyword: str, url: str) -> None:
             print('No Table With Rules Found')
     else:
         print("Failed to retrieve the page. Status code:", response.status_code)
+
+def extract_base_score_and_date(cve_id: str) -> (str, str):
+    url = NVD_URL + cve_id
+    nvd_response = setup_session(url)
+    if nvd_response.status_code == 200:
+        nvd_soup = BeautifulSoup(nvd_response.content, "html.parser")
+        base_score_element = nvd_soup.find('a', {'data-testid': 'vuln-cvss3-cna-panel-score'})
+
+        if not base_score_element:
+            base_score_element = nvd_soup.find('a', {'data-testid': 'vuln-cvss3-panel-score'})
+
+        base_score = base_score_element.get_text() if base_score_element else 'N/A'
+
+        nvd_published_date_element = nvd_soup.find('span', {'data-testid': 'vuln-published-on'})
+
+        base_score = base_score_element.get_text() if base_score_element else 'N/A'
+        nvd_published_date = nvd_published_date_element.get_text() if nvd_published_date_element else 'N/A'
+
+        return base_score, nvd_published_date
+    else:
+        return 'N/A', 'N/A'
+

@@ -1,0 +1,24 @@
+CVE ID,Link,Patch Type,Patch Link (NVD),Base-Score,NVD Published Date
+CVE-2023-41764,https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-41764,Patch,https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-41764,5.5 MEDIUM,09/12/2023
+CVE-2023-38696,https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-38696,NA,Patch Not Available,N/A,08/04/2023
+CVE-2023-38402,https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-38402,Vendor Advisory,https://www.arubanetworks.com/assets/alert/ARUBA-PSA-2023-011.txt,7.1 HIGH,08/15/2023
+CVE-2023-38254,https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-38254,Patch,https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-38254,6.5 MEDIUM,08/08/2023
+CVE-2023-38245,https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-38245,Vendor Advisory,https://helpx.adobe.com/security/products/acrobat/apsb23-30.html,5.5 MEDIUM,08/10/2023
+CVE-2023-38187,https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-38187,Patch,https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-38187,6.5 MEDIUM,07/21/2023
+CVE-2023-38185,https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-38185,Patch,https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-38185,8.8 HIGH,08/08/2023
+CVE-2023-38182,https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-38182,Patch,https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-38182,8.0 HIGH,08/08/2023
+CVE-2023-38181,https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-38181,Patch,https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-38181,8.8 HIGH,08/08/2023
+CVE-2023-38175,https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-38175,Patch,https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-38175,7.8 HIGH,08/08/2023
+CVE-2023-38173,https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-38173,Patch,https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-38173,4.3 MEDIUM,07/21/2023
+CVE-2023-38172,https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-38172,Patch,https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-38172,7.5 HIGH,08/08/2023
+CVE-2023-38169,https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-38169,Patch,https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-38169,8.8 HIGH,08/08/2023
+CVE-2023-38167,https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-38167,Patch,https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-38167,7.2 HIGH,08/08/2023
+CVE-2023-38164,https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-38164,Patch,https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-38164,7.6 HIGH,09/12/2023
+CVE-2023-38158,https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-38158,Patch,https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-38158,3.1 LOW,08/21/2023
+CVE-2023-38157,https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-38157,Patch,https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-38157,6.5 MEDIUM,08/07/2023
+CVE-2023-36913,https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-36913,Patch,https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-36913,6.5 MEDIUM,08/08/2023
+CVE-2023-36912,https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-36912,Patch,https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-36912,7.5 HIGH,08/08/2023
+CVE-2023-36911,https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-36911,Patch,https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-36911,9.8 CRITICAL,08/08/2023
+CVE-2023-36910,https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-36910,Patch,https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-36910,9.8 CRITICAL,08/08/2023
+CVE-2023-36909,https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-36909,Patch,https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-36909,6.5 MEDIUM,08/08/2023
+CVE-2023-36896,https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-36896,Patch,https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-36896,7.8 HIGH,08/08/2023

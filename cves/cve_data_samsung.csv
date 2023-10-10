@@ -1,0 +1,31 @@
+CVE ID,Link,Patch Type,Patch Link (NVD),Base-Score,NVD Published Date
+CVE-2023-42482,https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-42482,Vendor Advisory,https://semiconductor.samsung.com/support/quality-support/product-security-updates/,4.7 MEDIUM,09/21/2023
+CVE-2023-41929,https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-41929,Vendor Advisory,https://semiconductor.samsung.com/support/quality-support/product-security-updates/,7.3 HIGH,09/18/2023
+CVE-2023-41911,https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-41911,Vendor Advisory,https://semiconductor.samsung.com/support/quality-support/product-security-updates/,4.7 MEDIUM,09/28/2023
+CVE-2023-40218,https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-40218,Vendor Advisory,https://semiconductor.samsung.com/support/quality-support/product-security-updates/,2.0 LOW,09/12/2023
+CVE-2023-38523,https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-38523,NA,Patch Not Available,5.3 MEDIUM,07/20/2023
+CVE-2023-37377,https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-37377,Vendor Advisory,https://semiconductor.samsung.com/support/quality-support/product-security-updates/,2.0 LOW,09/07/2023
+CVE-2023-37368,https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-37368,Vendor Advisory,https://semiconductor.samsung.com/support/quality-support/product-security-updates/,5.9 MEDIUM,09/07/2023
+CVE-2023-37367,https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-37367,Vendor Advisory,https://semiconductor.samsung.com/support/quality-support/product-security-updates/,5.3 MEDIUM,09/07/2023
+CVE-2023-36482,https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-36482,Vendor Advisory,https://semiconductor.samsung.com/support/quality-support/product-security-updates/,4.3 MEDIUM,08/08/2023
+CVE-2023-36481,https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-36481,Vendor Advisory,https://semiconductor.samsung.com/support/quality-support/product-security-updates/,7.5 HIGH,08/28/2023
+CVE-2023-31116,https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-31116,Vendor Advisory,https://semiconductor.samsung.com/support/quality-support/product-security-updates/,9.8 CRITICAL,06/07/2023
+CVE-2023-31115,https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-31115,Vendor Advisory,https://semiconductor.samsung.com/support/quality-support/product-security-updates/,7.5 HIGH,06/07/2023
+CVE-2023-31114,https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-31114,Vendor Advisory,https://semiconductor.samsung.com/support/quality-support/product-security-updates/,9.1 CRITICAL,06/07/2023
+CVE-2023-30737,https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-30737,Vendor Advisory,https://security.samsungmobile.com/serviceWeb.smsb?year=2023&month=10,4.0 MEDIUM,10/04/2023
+CVE-2023-30736,https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-30736,Vendor Advisory,https://security.samsungmobile.com/serviceWeb.smsb?year=2023&month=10,4.4 MEDIUM,10/04/2023
+CVE-2023-30734,https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-30734,Vendor Advisory,https://security.samsungmobile.com/serviceWeb.smsb?year=2023&month=10,4.0 MEDIUM,10/04/2023
+CVE-2023-30729,https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-30729,Vendor Advisory,https://security.samsungmobile.com/serviceWeb.smsb?year=2023&month=09,8.1 HIGH,09/06/2023
+CVE-2023-30723,https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-30723,Vendor Advisory,https://security.samsungmobile.com/serviceWeb.smsb?year=2023&month=09,5.5 MEDIUM,09/06/2023
+CVE-2023-30722,https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-30722,Vendor Advisory,https://security.samsungmobile.com/serviceWeb.smsb?year=2023&month=09,5.5 MEDIUM,09/06/2023
+CVE-2023-30707,https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-30707,Vendor Advisory,https://security.samsungmobile.com/securityUpdate.smsb?year=2023&month=09,4.0 MEDIUM,09/06/2023
+CVE-2023-30706,https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-30706,Vendor Advisory,https://security.samsungmobile.com/securityUpdate.smsb?year=2023&month=09,7.5 HIGH,09/06/2023
+CVE-2023-30704,https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-30704,Vendor Advisory,https://security.samsungmobile.com/serviceWeb.smsb?year=2023&month=08,3.8 LOW,08/09/2023
+CVE-2023-30703,https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-30703,Vendor Advisory,https://security.samsungmobile.com/serviceWeb.smsb?year=2023&month=08,3.3 LOW,08/09/2023
+CVE-2023-30702,https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-30702,Vendor Advisory,https://security.samsungmobile.com/serviceWeb.smsb?year=2023&month=08,6.7 MEDIUM,08/09/2023
+CVE-2023-30695,https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-30695,Vendor Advisory,https://security.samsungmobile.com/serviceWeb.smsb?year=2023&month=08,6.7 MEDIUM,08/09/2023
+CVE-2023-30684,https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-30684,Vendor Advisory,https://security.samsungmobile.com/securityUpdate.smsb?year=2023&month=08,4.3 MEDIUM,08/09/2023
+CVE-2023-30677,https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-30677,Vendor Advisory,https://security.samsungmobile.com/serviceWeb.smsb?year=2023&month=07,6.1 MEDIUM,07/05/2023
+CVE-2023-30676,https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-30676,Vendor Advisory,https://security.samsungmobile.com/serviceWeb.smsb?year=2023&month=07,4.6 MEDIUM,07/05/2023
+CVE-2023-30675,https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-30675,Vendor Advisory,https://security.samsungmobile.com/serviceWeb.smsb?year=2023&month=07,6.2 MEDIUM,07/05/2023
+CVE-2023-30674,https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-30674,Vendor Advisory,https://security.samsungmobile.com/serviceWeb.smsb?year=2023&month=07,6.5 MEDIUM,07/05/2023
