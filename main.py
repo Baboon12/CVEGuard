@@ -1,20 +1,29 @@
-import concurrent.futures
-import excel_keywords
-import cve_details
+from modules.extract import get_cves
+from modules.keywords import (
+    create_urls, 
+    get_keywords,
+)
+
+
+PATH = 'keywords_demo.xlsx'
+
 
 def process_keyword(keyword, url):
     print(f"Started processing keyword: {keyword}")
-    cve_details.get_cves(keyword, url)
+    try:
+        file_path = 'cves_written/cve_data_' + keyword + '.txt'
+        with open(file_path, 'r') as file:
+            cves_written = file.readlines()
+
+        get_cves(keyword, url, cves_written)
+    except FileNotFoundError:
+        get_cves(keyword, url)
     print(f"Finished processing keyword: {keyword}")
 
+
 if __name__ == "__main__":
-    keywords = excel_keywords.get_keywords()
-    urls = excel_keywords.create_urls(keywords)
+    keywords = get_keywords(PATH)
+    urls = create_urls(keywords)
 
-    # Create a ThreadPoolExecutor to run processes in parallel
-    with concurrent.futures.ThreadPoolExecutor(max_workers=11) as executor:
-        # Submit each keyword and URL pair to run in parallel
-        futures = [executor.submit(process_keyword, keyword, url) for keyword, url in zip(keywords, urls)]
-
-        # Wait for all threads to complete
-        concurrent.futures.wait(futures)
+    for keyword, url in zip(keywords, urls):
+        process_keyword(keyword, url)
